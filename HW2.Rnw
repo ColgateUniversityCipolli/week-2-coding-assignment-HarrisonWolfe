@@ -83,7 +83,7 @@ numb.of.trap = 100
 width.of.trap = (b-a)/numb.of.trap
 
 #Points for trapezoid
-point.for.trap = a + 1:100*(width.of.trap)
+point.for.trap = a + 1:99*(width.of.trap)
 
 #Formula for the trapezoid
 
@@ -96,7 +96,7 @@ point.for.trap = a + 1:100*(width.of.trap)
   skeleton below. When you are done, remove \texttt{eval=FALSE} to show that
   the function provides the expected result for the example above.\\
   \textbf{Solution:}
-<<eval=FALSE, size="scriptsize", warning=FALSE, message=FALSE>>=
+<<size="scriptsize", warning=FALSE, message=FALSE>>=
 riemann.sums <- function(fnct,                        # function to integrate
                          a,                           # lower bound of integral
                          b,                           # upper bound of integral
@@ -119,20 +119,26 @@ riemann.sums <- function(fnct,                        # function to integrate
   ######################################
   if(method == "Left"){
     # Add necessary code here
-    left.points <- a + 0:99*(delta.x)
-(left.area <- sum(delta.x*(integrand(left.points))))
+    delta.x = (b-a)/n.rect
+    left.points <- a + (0:(n.rect-1))*(delta.x)
+    area = (left.area <- sum(delta.x*(fnct(left.points))))
   }else if(method == "Right"){
     # Add necessary code here
-    right.points <- a + 1:100*(delta.x)
-(right.area <- sum(delta.x*(integrand(right.points))))
+    delta.x = (b-a)/n.rect
+    right.points <- a + (1:(n.rect))*(delta.x)
+    area = (right.area <- sum(delta.x*(fnct(right.points))))
   }else if(method == "Midpoint"){
     # Add necessary code here
+    delta.x = (b-a)/n.rect
+    left.points <- a + (0:(n.rect-1))*(delta.x)
+    right.points <- a + (1:(n.rect))*(delta.x)
     mid.points <- (left.points+right.points)/2
-(mid.area <- sum(delta.x*(integrand(mid.points))))
+    area = (mid.area <- sum(delta.x*(fnct(mid.points))))
   }else if(method == "Trapezoidial"){
     # Add necessary code here
-point.for.trap = a + 1:100*(width.of.trap)
-0.5*width.of.trap*sum(integrand(a) + integrand(b) + sum(2*integrand(a+point.for.trap)))
+    delta.x = (b-a)/n.rect
+    point.for.trap = a + (1:(n.rect-1))*(delta.x)
+    area = 0.5*delta.x*sum(fnct(a) + fnct(b) + sum(2*fnct(a+point.for.trap)))
   }else{
     stop("Please select a valid method (e.g., 'Left', 'Right', 'Midpoint', 'Trapezoidial')")
   }
