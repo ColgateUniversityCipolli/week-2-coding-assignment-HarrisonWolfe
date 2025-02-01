@@ -69,6 +69,26 @@ mid.points <- (left.points+right.points)/2
   \textbf{Solution:}
 <<size="scriptsize", warning=FALSE, message=FALSE>>=
 # Write code for answer here.
+#Reiterating the bounds and questions
+a = 0 #Lower Bound
+b = 2 #Upper Bound 
+integrand = function(x){ #Making the Function
+  f <- 7 - 2 * x^2
+  return(f)
+}
+
+#Number of trapezoids
+numb.of.trap = 100
+#Setting up the width
+width.of.trap = (b-a)/numb.of.trap
+
+#Points for trapezoid
+point.for.trap = a + 1:100*(width.of.trap)
+
+#Formula for the trapezoid
+
+0.5*width.of.trap*sum(integrand(a) + integrand(b) + sum(2*integrand(a+point.for.trap)))
+
 @
   \item Write a function that takes \texttt{a}, \texttt{b}, and number of 
   rectangles (\texttt{n.rect}) in as input and returns the Trapezoidial Rule 
@@ -99,12 +119,20 @@ riemann.sums <- function(fnct,                        # function to integrate
   ######################################
   if(method == "Left"){
     # Add necessary code here
+    left.points <- a + 0:99*(delta.x)
+(left.area <- sum(delta.x*(integrand(left.points))))
   }else if(method == "Right"){
     # Add necessary code here
+    right.points <- a + 1:100*(delta.x)
+(right.area <- sum(delta.x*(integrand(right.points))))
   }else if(method == "Midpoint"){
     # Add necessary code here
+    mid.points <- (left.points+right.points)/2
+(mid.area <- sum(delta.x*(integrand(mid.points))))
   }else if(method == "Trapezoidial"){
     # Add necessary code here
+point.for.trap = a + 1:100*(width.of.trap)
+0.5*width.of.trap*sum(integrand(a) + integrand(b) + sum(2*integrand(a+point.for.trap)))
   }else{
     stop("Please select a valid method (e.g., 'Left', 'Right', 'Midpoint', 'Trapezoidial')")
   }
