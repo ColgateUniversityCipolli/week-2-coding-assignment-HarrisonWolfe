@@ -22,24 +22,24 @@ riemann.sums <- function(fnct,                        # function to integrate
     # Add necessary code here
     delta.x = (b-a)/n.rect
     left.points <- a + (0:(n.rect-1))*(delta.x)
-    (left.area <- sum(delta.x*(fnct(left.points))))
+    area = (left.area <- sum(delta.x*(fnct(left.points))))
   }else if(method == "Right"){
     # Add necessary code here
     delta.x = (b-a)/n.rect
     right.points <- a + (1:(n.rect))*(delta.x)
-    (right.area <- sum(delta.x*(fnct(right.points))))
+    area = (right.area <- sum(delta.x*(fnct(right.points))))
   }else if(method == "Midpoint"){
     # Add necessary code here
     delta.x = (b-a)/n.rect
     left.points <- a + (0:(n.rect-1))*(delta.x)
     right.points <- a + (1:(n.rect))*(delta.x)
     mid.points <- (left.points+right.points)/2
-    (mid.area <- sum(delta.x*(fnct(mid.points))))
+    area = (mid.area <- sum(delta.x*(fnct(mid.points))))
   }else if(method == "Trapezoidial"){
     # Add necessary code here
     delta.x = (b-a)/n.rect
-    point.for.trap = a + (1:(n.rect-1)*(delta.x)
-    0.5*delta.x*sum(fnct(a) + fnct(b) + sum(2*fnct(a+point.for.trap)))
+    point.for.trap = a + (1:(n.rect-1))*(delta.x)
+    area = 0.5*delta.x*sum(fnct(a) + fnct(b) + sum(2*fnct(a+point.for.trap)))
   }else{
     stop("Please select a valid method (e.g., 'Left', 'Right', 'Midpoint', 'Trapezoidial')")
   }
