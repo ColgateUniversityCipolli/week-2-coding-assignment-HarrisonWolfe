@@ -22,7 +22,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Consider the following integral:
-\[\int_{a}^{b} (7-x^2)dx.\]
+\[\int_{a}^{b} (7- 2x^2)dx.\]
 While this is a relatively straightforward integral -- split the difference and use power rule for integration -- we can approximate the area under this curve using Riemann sums. Below, I describe four rules for computing Riemann sums using rectangles of width $\delta_x$.
 \begin{itemize}
   \item Left Rule uses the left points to create the rectangles.
@@ -87,7 +87,7 @@ point.for.trap = a + 1:99*(width.of.trap)
 
 #Formula for the trapezoid
 
-0.5*width.of.trap*sum(integrand(a) + integrand(b) + sum(2*integrand(a+point.for.trap)))
+0.5*width.of.trap*sum(integrand(a) + integrand(b) + sum(2*integrand(point.for.trap)))
 
 @
   \item Write a function that takes \texttt{a}, \texttt{b}, and number of 
@@ -138,7 +138,7 @@ riemann.sums <- function(fnct,                        # function to integrate
     # Add necessary code here
     delta.x = (b-a)/n.rect
     point.for.trap = a + (1:(n.rect-1))*(delta.x)
-    area = 0.5*delta.x*sum(fnct(a) + fnct(b) + sum(2*fnct(a+point.for.trap)))
+    area = 0.5*delta.x*sum(fnct(a) + fnct(b) + sum(2*fnct(point.for.trap)))
   }else{
     stop("Please select a valid method (e.g., 'Left', 'Right', 'Midpoint', 'Trapezoidial')")
   }

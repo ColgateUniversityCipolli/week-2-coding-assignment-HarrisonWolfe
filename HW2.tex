@@ -72,7 +72,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \item Consider the following integral:
-\[\int_{a}^{b} (7-x^2)dx.\]
+\[\int_{a}^{b} (7- 2x^2)dx.\]
 While this is a relatively straightforward integral -- split the difference and use power rule for integration -- we can approximate the area under this curve using Riemann sums. Below, I describe four rules for computing Riemann sums using rectangles of width $\delta_x$.
 \begin{itemize}
   \item Left Rule uses the left points to create the rectangles.
@@ -171,7 +171,7 @@ We can compute the area using the Midpoint Rule as follows.
 
 \hlcom{#Formula for the trapezoid}
 
-\hlnum{0.5}\hlopt{*}\hldef{width.of.trap}\hlopt{*}\hlkwd{sum}\hldef{(}\hlkwd{integrand}\hldef{(a)} \hlopt{+} \hlkwd{integrand}\hldef{(b)} \hlopt{+} \hlkwd{sum}\hldef{(}\hlnum{2}\hlopt{*}\hlkwd{integrand}\hldef{(a}\hlopt{+}\hldef{point.for.trap)))}
+\hlnum{0.5}\hlopt{*}\hldef{width.of.trap}\hlopt{*}\hlkwd{sum}\hldef{(}\hlkwd{integrand}\hldef{(a)} \hlopt{+} \hlkwd{integrand}\hldef{(b)} \hlopt{+} \hlkwd{sum}\hldef{(}\hlnum{2}\hlopt{*}\hlkwd{integrand}\hldef{(point.for.trap)))}
 \end{alltt}
 \begin{verbatim}
 ## [1] 8.6664
@@ -228,7 +228,7 @@ We can compute the area using the Midpoint Rule as follows.
     \hlcom{# Add necessary code here}
     \hldef{delta.x} \hlkwb{=} \hldef{(b}\hlopt{-}\hldef{a)}\hlopt{/}\hldef{n.rect}
     \hldef{point.for.trap} \hlkwb{=} \hldef{a} \hlopt{+} \hldef{(}\hlnum{1}\hlopt{:}\hldef{(n.rect}\hlopt{-}\hlnum{1}\hldef{))}\hlopt{*}\hldef{(delta.x)}
-    \hldef{area} \hlkwb{=} \hlnum{0.5}\hlopt{*}\hldef{delta.x}\hlopt{*}\hlkwd{sum}\hldef{(}\hlkwd{fnct}\hldef{(a)} \hlopt{+} \hlkwd{fnct}\hldef{(b)} \hlopt{+} \hlkwd{sum}\hldef{(}\hlnum{2}\hlopt{*}\hlkwd{fnct}\hldef{(a}\hlopt{+}\hldef{point.for.trap)))}
+    \hldef{area} \hlkwb{=} \hlnum{0.5}\hlopt{*}\hldef{delta.x}\hlopt{*}\hlkwd{sum}\hldef{(}\hlkwd{fnct}\hldef{(a)} \hlopt{+} \hlkwd{fnct}\hldef{(b)} \hlopt{+} \hlkwd{sum}\hldef{(}\hlnum{2}\hlopt{*}\hlkwd{fnct}\hldef{(point.for.trap)))}
   \hldef{\}}\hlkwa{else}\hldef{\{}
     \hlkwd{stop}\hldef{(}\hlsng{"Please select a valid method (e.g., 'Left', 'Right', 'Midpoint', 'Trapezoidial')"}\hldef{)}
   \hldef{\}}
